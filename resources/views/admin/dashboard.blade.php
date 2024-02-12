@@ -1,73 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="flex justify-around">
-    <div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialities</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+   <style>
+        .sidebar {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            width: 220px; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .content {
+            margin-left: 240px; 
+            padding: 20px;
+            width: 100%
+        }
+
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+    <div class="flex">
         <x-admin-nav />
-    </div>  
-    <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
-            <div class="w-full p-6">
-                <!--Metric Card-->
-                <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
-                    <div class="flex flex-row items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-5 bg-green-600"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
+        <div class="content">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:py-24 lg:px-8">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our service statistics</h2>
+                <div class="grid grid-cols-2 gap-5 mt-4">
+                    <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <dl>
+                                <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Total Médecins</dt>
+                                <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600"> {{$medecinCount}} </dd>
+                            </dl>
                         </div>
-                        <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold uppercase text-gray-600">Tosdmjsdlqmjl Revenue</h2>
-                           <p class="font-bold text-3xl">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <dl>
+                                <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Total Médicaments</dt>
+                                <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600">19.2K</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <dl>
+                                <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Total Specialities</dt>
+                                <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600"> {{$specialitiesCount}} </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <dl>
+                                <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Total Patients</dt>
+                                <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600">{{$patientCount}} </dd>
+                            </dl>
                         </div>
                     </div>
                 </div>
-                <!--/Metric Card-->
             </div>
             
-            <div class="w-full p-6">
-                <!--Metric Card-->
-                <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
-                    <div class="flex flex-row items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
-                        </div>
-                        <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold uppercase text-gray-600">New Users</h2>
-                            <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
-                        </div>
-                    </div>
-                </div>
-                <!--/Metric Card-->
-            </div>
-         
-            <div class="w-full p-6">
-                <!--Metric Card-->
-                <div class="bg-gradient-to-b from-indigo-200 to-indigo-100 border-b-4 border-indigo-500 rounded-lg shadow-xl p-5">
-                    <div class="flex flex-row items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-5 bg-indigo-600"><i class="fas fa-tasks fa-2x fa-inverse"></i></div>
-                        </div>
-                        <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold uppercase text-gray-600">To Do List</h2>
-                            <p class="font-bold text-3xl">7 tasks</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/Metric Card-->
-            </div>
-            <div class="w-full p-6">
-                <!--Metric Card-->
-                <div class="bg-gradient-to-b from-red-200 to-red-100 border-b-4 border-red-500 rounded-lg shadow-xl p-5">
-                    <div class="flex flex-row items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-5 bg-red-600"><i class="fas fa-inbox fa-2x fa-inverse"></i></div>
-                        </div>
-                        <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold uppercase text-gray-600">Issues</h2>
-                            <p class="font-bold text-3xl">3 <span class="text-red-500"><i class="fas fa-caret-up"></i></span></p>
-                        </div>
-                    </div>
-                </div>
-                <!--/Metric Card-->
-            </div>
+            
         </div>
     </div>
-</div>
+
+            
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+</body>
+
+</html>
+
 
