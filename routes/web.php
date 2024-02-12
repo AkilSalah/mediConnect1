@@ -43,15 +43,14 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/admin.dashboard', [AdminController::class,'index']);
-Route::get('/admin.dashboard', [AdminController::class,'statics']);
 
-Route::get('/admin.medicament', [medicamentController::class,'index']);
-Route::get('/admin.medicament', [medicamentController::class,'allSpeciality'])->name('medicament.allSpeciality');
-Route::post('/admin.medicament', [medicamentController::class, 'insertMedicament'])->name('medicament.insertMedicament');
-Route::put('/admin.medicament/{idMedicament}', [medicamentController::class,'updateMedicament'])->name('medicament.updateMedicament');
 // Route::get('/admin.medicament', [medicamentController::class,'allMedicament'])->name('medicament.allMedicament');
-Route::delete('/admin.medicament/{idMedicament}', [medicamentController::class, 'deletMedicament'])->name('medicament.delete');
+// Route::get('/admin.medicament', [medicamentController::class,'index']);
 
+Route::get('/admin.medicament', [medicamentController::class, 'allSpecialityM'])->name('medicament.allSpecialityM');
+Route::post('/admin.medicament', [medicamentController::class, 'insertMedicament'])->name('medicament.insertMedicament');
+Route::put('/admin.medicament/{idMedicament}', [medicamentController::class, 'updateMedicament'])->name('medicament.updateMedicament');
+Route::delete('/admin.medicament/{idMedicament}', [medicamentController::class, 'deleteMedicament'])->name('delete');
 
 Route::put('/admin.speciality/{idSpeciality}', [specialityController::class,'updateSpeciality'])->name('speciality.updateSpeciality');
 Route::post('/admin.speciality', [SpecialityController::class, 'insertSpeciality'])->name('speciality.insertSpeciality');

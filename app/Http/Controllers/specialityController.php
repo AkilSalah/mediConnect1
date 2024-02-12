@@ -14,9 +14,10 @@ class specialityController extends Controller
         $specialities = Speciality::all();
         return view('admin.speciality',compact('specialities'));
     }
+
     public function insertSpeciality(Request $request){
         $request->validate([
-            'specialityname' => 'required',   
+            'specialityname' => 'required',
         ]);
         Speciality::create([
             'specialityName' => $request->specialityname,
@@ -26,20 +27,20 @@ class specialityController extends Controller
     }
 
     public function updateSpeciality(Request $request, $idSpeciality)
-{
+    {
     $request->validate([
-        'specialityName' => 'required',
+        'specialityname' => 'required',
     ]);
 
     $speciality = Speciality::findOrFail($idSpeciality);
 
     $speciality->update([
-        'specialityName' => $request->specialityName,
+        'specialityName' => $request->specialityname,
     ]);
-    return redirect()->route('speciality.allSpeciality')->with('success', 'Speciality updated successfully');
-}
 
-    
+    return redirect()->route('speciality.allSpeciality');
+    }
+
 
     public function deleteSpeciality(Request $request, $specialityId){
         $speciality = Speciality::find($specialityId);
@@ -49,6 +50,5 @@ class specialityController extends Controller
         return redirect()->route('speciality.allSpeciality');
     }
     
-
 
 }

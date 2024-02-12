@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specialities</title>
+    <title>Admin | Médicaments</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <style>
@@ -67,7 +67,8 @@
                                     <span class="sr-only">Close modal</span>
                                 </button>
                             </div>
-                            <form action=" {{ route('medicament.insertMedicament')}} " method="POST" class="p-4 md:p-5">
+                            <form action=" {{ route('medicament.insertMedicament')}} " method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
+                                @csrf
                                 <div class="grid gap-4 mb-4 grid-cols-2">
                                     <div class="col-span-2">
                                         <label for="name"
@@ -132,16 +133,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($medicaments as $medicament)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                    1 </td>
+                                {{$medicament->id}}
+                                </td>
                                 <td class="p-4">
-                                    <img src="/docs/images/products/apple-watch.png"
-                                        class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                                    <img src="{{ URL($medicament->medicamentImage) }}" 
+                                    class="w-16 md:w-32 max-w-full max-h-full" alt="Médicament">
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                    Apple Watch
+                                    {{$medicament->medicamentName}}
                                 </td>
 
 
@@ -150,7 +153,7 @@
                                             <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline" data-modal-target="crud-modal-up" data-modal-toggle="crud-modal-up" ">
                                                 Edit
                                             </button>
-                                            <form action="" method="POST">
+                                            <form action="{{ route('delete', $medicament->id ) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">
@@ -159,9 +162,12 @@
                                             </form>
                                             
                                             
+                                            
                                     </div>
                                 </td>
-                            </tr>
+                            </tr>   
+                            @endforeach
+
 
                         </tbody>
                     </table>

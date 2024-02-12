@@ -11,7 +11,7 @@ class Medicament extends Model
     protected $fillable = [
      'medicamentName',
      'medicamentImage',
-     'medicamentSpeciality',
+     'speciality_id',
     ];
 
     public function speciality(){
