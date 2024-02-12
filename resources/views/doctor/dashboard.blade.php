@@ -1,18 +1,69 @@
-doctor
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor | Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+   <style>
+        .sidebar {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            width: 220px; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .content {
+            margin-left: 240px; 
+            padding: 20px;
+            width: 100%
+        }
+
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+    <div class="flex">
+        <x-doctor-nav />
+        <div class="content">
+            <div class="max-w-6xl mx-auto text-[#333] font-[sans-serif]">
+                <div class="bg-gray-50 max-sm:px-8 px-12 py-8 w-full rounded">
+                  <h1 class="text-4xl text-blue-700 font-extrabold">Les dossiers médicaux </h1>
+                  <div class="my-6">
+                    <p class=" text-sm">Vous trouverez ci-dessous tous les dossiers médicaux des patients avec lesquels vous avez effectué une consultation.</p>
+                  </div>
                 </div>
-            </div>
-        </div>
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                  <div class="bg-gray-50 max-sm:px-8 px-12 py-8 w-full rounded">
+                    <div class="flex justify-between" >
+                      <h2 class=" font-bold">Monsieur</h2>
+                    <h2 class=" font-bold">10-02-2002</h2>  
+                    </div>
+                    <h4 class="mt-2 font-bold">Gray Card</h4>  
+
+                    <div class="my-6">
+                      <p class=" text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan, nunc et
+                        tempus blandit, metus mi consectetur nibh, a pharetra felis turpis vitae ligula. Etiam laoreet velit nec neque
+                        ultrices, non consequat mauris tincidunt.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+         </div>
+
     </div>
-</x-app-layout>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+</body>
+
+</html>
+
+

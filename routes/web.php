@@ -6,6 +6,7 @@ use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\medicamentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\rendezVousController;
 use App\Http\Controllers\specialityController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('/patient/home' ,[PatientController::class,'index'])->name('patient'); 
-Route::get('/doctor/home' ,[MedecinController::class,'index'])->name('doctor');
+Route::get('/doctor/dashboard' ,[MedecinController::class,'index'])->name('doctor');
 
 
 Route::get('/', function () {
@@ -42,11 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// -------------------------ADMIN-----------------------------------------------
 Route::get('/admin.dashboard', [AdminController::class,'index']);
-
-// Route::get('/admin.medicament', [medicamentController::class,'allMedicament'])->name('medicament.allMedicament');
-// Route::get('/admin.medicament', [medicamentController::class,'index']);
-
 Route::get('/admin.medicament', [medicamentController::class, 'allSpecialityM'])->name('medicament.allSpecialityM');
 Route::post('/admin.medicament', [medicamentController::class, 'insertMedicament'])->name('medicament.insertMedicament');
 Route::put('/admin.medicament/{idMedicament}', [medicamentController::class, 'updateMedicament'])->name('medicament.updateMedicament');
@@ -57,8 +56,14 @@ Route::post('/admin.speciality', [SpecialityController::class, 'insertSpeciality
 Route::get('/admin.speciality', [specialityController::class,'index']);
 Route::get('/admin.speciality', [specialityController::class,'allSpeciality'])->name('speciality.allSpeciality');
 Route::delete('/admin.speciality/{specialityId}', [SpecialityController::class, 'deleteSpeciality'])->name('speciality.delete');
+// ----------------------------------------------------------------------------------
 
-
-
-
+// ----------------------------DOCTOR--------------------------------------------------
+Route::get('/doctor.dashboard', [MedecinController::class,'index']);
+Route::get('/doctor.medicament', [MedecinController::class, 'allSpecialityM'])->name('Medicament.allSpecialityM');
+Route::post('/doctor.medicament', [MedecinController::class, 'insertMedicament'])->name('Medicament.insertMedicament');
+Route::put('/doctor.medicament/{idMedicament}', [MedecinController::class, 'updateMedicament'])->name('Medicament.updateMedicament');
+Route::delete('/doctor.medicament/{idMedicament}', [MedecinController::class, 'deleteMedicament'])->name('Delete');
+Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
+// ----------------------------------------------------------------------------------------
 require __DIR__.'/auth.php';

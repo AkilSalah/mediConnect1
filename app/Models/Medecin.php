@@ -20,5 +20,11 @@ class Medecin extends Model
     public function user(){
         return $this->belongsTo(User::class,'id');
     }
+    public function dossiers(){
+        return $this->hasMany(DossierMedical::class);
+    }
+    public function rendez_vous(){
+        return $this->hasMany(RendezVous::class);
+    }
 }
 
