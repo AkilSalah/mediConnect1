@@ -66,4 +66,10 @@ Route::put('/doctor.medicament/{idMedicament}', [MedecinController::class, 'upda
 Route::delete('/doctor.medicament/{idMedicament}', [MedecinController::class, 'deleteMedicament'])->name('Delete');
 Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
 // ----------------------------------------------------------------------------------------
+
+// -------------------------------PATIENT--------------------------------------------------------
+Route::get('/patient.home', [PatientController::class, 'index'])->name('index');
+
+
+// -------------------------------------------------------------------------------------------------
 require __DIR__.'/auth.php';
