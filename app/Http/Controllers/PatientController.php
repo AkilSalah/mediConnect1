@@ -14,17 +14,24 @@ class PatientController extends Controller
     
         $doctorsQuery = Medecin::with('user', 'spaciality')
             ->join('users', 'medecins.id_user', '=', 'users.id')
-            ->join('specialities', 'medecins.id_spaciality', '=', 'specialities.id')
-            ->where('specialities.specialityName', 'Généraliste');
-    
+            ->join('specialities', 'medecins.id_spaciality', '=', 'specialities.id');
+            
         $speciality = $request->input('speciality');
-        if ($speciality && $speciality !== 'Généraliste') {
-            $doctorsQuery->orWhere('specialities.specialityName', $speciality);
-        }
+        if ($speciality && $speciality !== 'Tout') {
+            $doctorsQuery->where('specialities.id', $speciality);
+            }
     
         $doctors = $doctorsQuery->get();
     
         return view('patient.home', compact('specialities', 'doctors'));  
+    }
+
+    public function doctorProfil(Request $request, $id) {
+        $medecin = Medecin::with('user','spaciality')
+            ->join('users','medecins.id_user', '=', 'users.id')
+            ->join('specialities','medecins.id_spaciality', '=','specialities.id')
+            ->where('medecins.id', $id);
+        return view('patient.doctorProfil', compact('medecin'));
     }
     
 

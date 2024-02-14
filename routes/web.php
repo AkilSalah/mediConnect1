@@ -69,7 +69,7 @@ Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
 
 // -------------------------------PATIENT--------------------------------------------------------
 Route::get('/patient.home', [PatientController::class, 'index'])->name('index');
-
+Route::get('/patient.doctorProfil',[PatientController::class,'doctorProfil'])->name('doctorProfil');
 
 // -------------------------------------------------------------------------------------------------
 require __DIR__.'/auth.php';

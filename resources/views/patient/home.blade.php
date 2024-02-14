@@ -36,9 +36,11 @@
     <div>
         <h2 class="text-center text-4xl font-extrabold mt-4">Specialities</h2>
         <div class=" flex justify-center" >
-          <form action="{{ route('index') }} " class="flex gap-2 " method="GET">
+          <form action="{{ route('index') }} " method="get" class="flex gap-2 " >
+            @csrf
             <select id="countries" name="speciality" class="mt-6 ml-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected disabled>Sélectionnez un continent</option>
+                <option value="Tout">Tout</option>
                 @foreach ($specialities as $speciality)
                 <option value="{{ $speciality->id }}">{{ $speciality->specialityName }}
                 </option>
