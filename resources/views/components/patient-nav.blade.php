@@ -3,9 +3,12 @@
       <a href=""><img src=" {{'/logo/mediLogo.png'}} " alt="logo" class='w-36' />
       </a>
       <div class='flex lg:order-1 max-sm:ml-auto'>
-        <button
-          class='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Favoris</button>
-      
+          <form method="get" action="/profile">
+            @csrf
+            <button      
+                class='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Profile</button>
+            </button>
+        </form>
           <form method="post" action="/logout">
             @csrf
             <button
@@ -31,7 +34,7 @@
             class='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Feature</a>
         </li>
         <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'
-            class='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Blog</a>
+            class='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Favoris</a>
         </li>
         
         <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'

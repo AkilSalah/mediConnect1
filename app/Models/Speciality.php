@@ -16,6 +16,6 @@ class Speciality extends Model
         return $this->hasMany(Medecin::class,'id');
     }
     public function medicaments(){
-        return $this->hasMany(Medicament::class);
+        return $this->hasMany(Medicament::class,'id');
     }
 }

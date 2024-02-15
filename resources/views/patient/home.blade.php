@@ -39,7 +39,7 @@
           <form action="{{ route('index') }} " method="get" class="flex gap-2 " >
             @csrf
             <select id="countries" name="speciality" class="mt-6 ml-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected disabled>Sélectionnez un continent</option>
+                <option selected disabled>Sélectionnez une spécialité</option>
                 <option value="Tout">Tout</option>
                 @foreach ($specialities as $speciality)
                 <option value="{{ $speciality->id }}">{{ $speciality->specialityName }}
@@ -55,7 +55,7 @@
         </form>
         </div>
           
-        </div>
+    </div>
 
 
 
@@ -71,9 +71,14 @@
                           </div>
                       </div>
                       <div class="mt-8 flex justify-center">
-                          <div class="w-12 h-12 p-3 flex items-center justify-center cursor-pointer">
-                              <button type="button" class="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#35ac33] bg-[#35ac33] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#35ac33]">Consulter</button>
-                          </div>
+                        <form action="{{ route('doctorProfil', $doctor->id_user) }}" method="GET">
+                            @csrf
+                            <div class="w-12 h-12 p-3 flex items-center justify-center cursor-pointer">
+                                <button type="submit" class="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#35ac33] bg-[#35ac33] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#35ac33]">Consulter</button>
+                            </div>
+                        </form>
+                        
+                          
                       </div>
                   </div>
               </div>
@@ -82,6 +87,8 @@
       
 
     </div>
+
+    <x-footer />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>

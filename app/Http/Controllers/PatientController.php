@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    public function index(Request $request) { 
+    public function index(Request $request ) { 
         $specialities = Speciality::all();
     
         $doctorsQuery = Medecin::with('user', 'spaciality')
@@ -26,13 +26,15 @@ class PatientController extends Controller
         return view('patient.home', compact('specialities', 'doctors'));  
     }
 
-    public function doctorProfil(Request $request, $id) {
-        $medecin = Medecin::with('user','spaciality')
-            ->join('users','medecins.id_user', '=', 'users.id')
-            ->join('specialities','medecins.id_spaciality', '=','specialities.id')
-            ->where('medecins.id', $id);
+    public function doctorProfil(Request $request, $id_user) {
+        $medecin = Medecin::with('user', 'spaciality')
+        ->join('users', 'medecins.id_user', '=', 'users.id')
+        ->join('specialities', 'medecins.id_spaciality', '=', 'specialities.id')
+        ->where('medecins.id_user', $id_user)
+        ->first();
         return view('patient.doctorProfil', compact('medecin'));
     }
+    
     
 
    

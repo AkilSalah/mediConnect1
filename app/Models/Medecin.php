@@ -17,14 +17,21 @@ class Medecin extends Model
     public function spaciality(){
         return $this->belongsTo(Speciality::class,'id');
     }
+
     public function user(){
         return $this->belongsTo(User::class,'id');
     }
+
     public function dossiers(){
         return $this->hasMany(DossierMedical::class);
     }
+
     public function rendez_vous(){
         return $this->hasMany(RendezVous::class);
     }
-}
 
+    public function favoris(){
+        return $this->hasMany(Favoris::class,'id');
+    }
+
+}
