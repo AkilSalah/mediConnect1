@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="mt-40 text-center border-b pb-12">
-                    <h1 class="text-4xl font-medium text-gray-700">DR. {{$medecin->name}} </h1>
+                    <h1 class="text-4xl font-medium text-gray-700">DR. {{$medecinDetails->name}} </h1>
                     <div class="flex justify-center items-center mt-4 ">
                         <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
@@ -43,11 +43,10 @@
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                         </svg>
                     </div>
-                     <p class="mt-8 text-gray-500">Spécialité - {{$medecin->specialityName}} </p>
+                     <p class="mt-8 text-gray-500">Spécialité - {{$medecinDetails->specialityName}} </p>
                 </div>
-                
                 <div class="space-x-8 flex justify-between mt-5 md:justify-center">
-                    <form action="{{ route('favoriStore',$medecin->id_user) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('favoriStore',$id_medecin) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <button
                     class="text-white py-2 px-4 uppercase rounded bg-red-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">

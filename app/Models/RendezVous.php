@@ -11,6 +11,7 @@ class RendezVous extends Model
     protected $fillable = [
         'id_patient',
         'id_medecin',
+        'date',
         'isUrgent',
     ];
     public function patient(){

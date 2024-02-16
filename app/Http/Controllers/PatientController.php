@@ -27,13 +27,23 @@ class PatientController extends Controller
     }
 
     public function doctorProfil(Request $request, $id_user) {
-        $medecin = Medecin::with('user', 'spaciality')
-        ->join('users', 'medecins.id_user', '=', 'users.id')
-        ->join('specialities', 'medecins.id_spaciality', '=', 'specialities.id')
-        ->where('medecins.id_user', $id_user)
-        ->first();
-        return view('patient.doctorProfil', compact('medecin'));
+        $medecin = Medecin::where('id_user', $id_user)->first();
+    
+        if ($medecin) {
+            $id_medecin = $medecin->id;
+            $medecinDetails = Medecin::with('user', 'spaciality')
+                ->join('users', 'medecins.id_user', '=', 'users.id')
+                ->join('specialities', 'medecins.id_spaciality', '=', 'specialities.id')
+                ->where('medecins.id', $id_medecin) 
+                ->first();
+    
+            return view('patient.doctorProfil', compact('medecinDetails','id_medecin'));
+        } 
     }
+    
+
+ 
+    
     
     
 
