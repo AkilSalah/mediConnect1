@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\favorisController;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\medicamentController;
@@ -72,7 +73,7 @@ Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
 Route::get('/patient.home', [PatientController::class, 'index'])->name('index');
 Route::get('/patient.doctorProfil/{id_user}',[PatientController::class,'doctorProfil'])->name('doctorProfil');
 Route::get('/patient.favoris',[favorisController::class,'index'])->name('favoris');
-Route::post('/patient.favoris/{idMedecin}', [favorisController::class, 'favoriStore'])->name('favoriStore');
-
+Route::post('/patient.favoris/{id_medecin}', [favorisController::class, 'favoriStore'])->name('favoriStore');
+Route::post('/patient.doctorProfil/{id_medecin}', [CommentaireController::class, 'store'])->name('commentaire');
 // -------------------------------------------------------------------------------------------------
 require __DIR__.'/auth.php';

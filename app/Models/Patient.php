@@ -25,5 +25,8 @@ class Patient extends Model
     public function favoris(){
         return $this->hasMany(Favoris::class,'id');
     }
+    public function commentaire(){
+        return $this->hasMany(Commentaire::class,'id');
+    }
     
 }

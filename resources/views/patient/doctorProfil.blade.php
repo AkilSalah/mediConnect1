@@ -24,6 +24,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-40 text-center border-b pb-12">
                     <h1 class="text-4xl font-medium text-gray-700">DR. {{$medecinDetails->name}} </h1>
                     <div class="flex justify-center items-center mt-4 ">
@@ -45,8 +46,9 @@
                     </div>
                      <p class="mt-8 text-gray-500">Spécialité - {{$medecinDetails->specialityName}} </p>
                 </div>
+                {{-- @dd($medecinDetails) --}}
                 <div class="space-x-8 flex justify-between mt-5 md:justify-center">
-                    <form action="{{ route('favoriStore',$id_medecin) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('favoriStore',$medecinDetails->id_user) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <button
                     class="text-white py-2 px-4 uppercase rounded bg-red-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
@@ -61,27 +63,31 @@
                         <div class="flex justify-between items-center mb-6">
                           <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Commentaire</h2>
                       </div>
-                      <form class="mb-6">
+                      
+                      <form action=" {{ route('commentaire',$medecinDetails->id_user) }} " method="post" class="mb-6">
+                        @csrf
                           <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                               <label for="comment" class="sr-only">Your comment</label>
-                              <textarea id="comment" rows="6"
+                              <textarea id="comment" rows="6" name="commentaire"
                                   class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                                   placeholder="Write a comment..." required></textarea>
                           </div>
                           <button type="submit"
-                              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white-700 bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                               Post comment
                           </button>
                       </form>
-                      <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+
+                     @foreach ($commentaires as $commentaire)
+                    <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
                           <footer class="flex justify-between items-center mb-2">
                               <div class="flex items-center">
                                   <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
                                           class="mr-2 w-6 h-6 rounded-full"
                                           src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                          alt="Michael Gough">Michael Gough</p>
+                                          alt="Michael Gough"> {{$commentaire->name}} </p>
                                   <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                                          title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                          title="February 8th, 2022"> {{$commentaire->created_at}} </time></p>
                               </div>
                               <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
                                   class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -111,11 +117,13 @@
                                   </ul>
                               </div>
                           </footer>
-                          <p class="text-gray-500 dark:text-gray-400">Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
-                              instruments for the UX designers. The knowledge of the design tools are as important as the
-                              creation of the design strategy.</p>
+                          <p class="text-gray-500 dark:text-gray-400"> {{$commentaire->commentaire}} </p>
                           
-                      </article>          
+                      </article>            
+                      @endforeach
+
+                      
+                     
     </div>
     <div class="w-full ">
        <x-footer />  

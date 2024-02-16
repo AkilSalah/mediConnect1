@@ -34,4 +34,8 @@ class Medecin extends Model
         return $this->hasMany(Favoris::class,'id');
     }
 
+    public function commentaire(){
+        return $this->hasMany(Commentaire::class,'id');
+    }
+
 }

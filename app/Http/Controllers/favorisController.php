@@ -29,7 +29,7 @@ class favorisController extends Controller
 
     
 
-    public function favoriStore($idMedecin)
+    public function favoriStore($id_user)
 {
     $id_user = Auth::user()->id;
     $patient = Patient::where('id_user', $id_user)->first();
@@ -37,7 +37,7 @@ class favorisController extends Controller
     if ($patient) {
         Favoris::create([
             'id_patient' => $patient->id,
-            'id_medecin' => $idMedecin,
+            'id_medecin' => $id_user,
         ]);
     }
 

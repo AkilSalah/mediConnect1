@@ -13,4 +13,10 @@ class Commentaire extends Model
         'id_medecin',
         'commentaire',
     ];
+    public function patient(){
+        return $this->belongsTo(Patient::class, 'id');
+    }
+    public function medecin(){
+        return $this->belongsTo(Medecin::class , 'id');
+    }
 }
