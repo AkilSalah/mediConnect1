@@ -70,10 +70,14 @@ Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
 // ----------------------------------------------------------------------------------------
 
 // -------------------------------PATIENT--------------------------------------------------------
+
 Route::get('/patient.home', [PatientController::class, 'index'])->name('index');
 Route::get('/patient.doctorProfil/{id_user}',[PatientController::class,'doctorProfil'])->name('doctorProfil');
 Route::get('/patient.favoris',[favorisController::class,'index'])->name('favoris');
 Route::post('/patient.favoris/{id_medecin}', [favorisController::class, 'favoriStore'])->name('favoriStore');
 Route::post('/patient.doctorProfil/{id_medecin}', [CommentaireController::class, 'store'])->name('commentaire');
+Route::get('/patient.reserve/{idDoctor}', [rendezVousController::class,'indexPatient'])->name('patient.reserve');
+Route::post('/patient.reserve', [rendezVousController::class,'rendezVousStore'])->name('rendezVousStore');
+
 // -------------------------------------------------------------------------------------------------
 require __DIR__.'/auth.php';

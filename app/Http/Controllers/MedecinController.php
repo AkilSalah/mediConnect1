@@ -69,6 +69,10 @@ class MedecinController extends Controller
         return redirect()->route('Medicament.allSpecialityM');
     }
 
+    public function MedecinRendezvous(){
+
+    }
+
 
 
 

@@ -8,16 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class RendezVous extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'id_patient',
-        'id_medecin',
+        'patient_id',
+        'medecin_id',
         'date',
-        'isUrgent',
     ];
-    public function patient(){
-        return $this->belongsTo(Patient::class);
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
-    public function medecin(){
-        return $this->belongsTo(Medecin::class);
+
+    public function medecin()
+    {
+        return $this->belongsTo(Medecin::class, 'medecin_id');
     }
 }
+

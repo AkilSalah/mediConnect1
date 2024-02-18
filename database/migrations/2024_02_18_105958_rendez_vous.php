@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained('patients');
             $table->foreignId('medecin_id')->constrained('medecins');
-            $table->date('date');
-            $table->boolean('isUrgent')->default(0);
+            $table->enum('date', ['08:00','09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00' ]);
+            $table->boolean('isUrgent')->default(false);
             $table->timestamps();
         });
     }

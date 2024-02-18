@@ -20,7 +20,7 @@ class Patient extends Model
         return $this->hasMany(DossierMedical::class);
     }
     public function rendez_vous(){
-        return $this->hasMany(RendezVous::class);
+        return $this->hasMany(RendezVous::class,'id');
     }
     public function favoris(){
         return $this->hasMany(Favoris::class,'id');

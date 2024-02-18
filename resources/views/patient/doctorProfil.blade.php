@@ -54,9 +54,20 @@
                     class="text-white py-2 px-4 uppercase rounded bg-red-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                     Favoris</button>
                 </form>   
-                 <button 
-                    class="text-white py-2 px-4 uppercase rounded bg-green-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                    Rendez vous</button> 
+                
+                <a href="{{ route('patient.reserve', $medecinDetails->id_user) }}">
+                    <button class="text-white py-2 px-4 uppercase rounded bg-green-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        Rendez-vous
+                    </button>
+                </a>
+                
+                {{-- <form action="{{ route('patient.reserve' , $medecinDetails->id_user) }}" method="GET">
+                    @csrf
+                    <button type="submit" class="text-white py-2 px-4 uppercase rounded bg-green-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        Rendez-vous
+                    </button>
+                </form> --}}
+                
                 </div>
                 <section class="bg-white dark:bg-gray-900 antialiased">
                     <div class="max-w-2xl mt-10 mx-auto px-4">
@@ -78,6 +89,7 @@
                           </button>
                       </form>
 
+                      @if (@isset($commentaires))
                      @foreach ($commentaires as $commentaire)
                     <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
                           <footer class="flex justify-between items-center mb-2">
@@ -122,7 +134,8 @@
                       </article>            
                       @endforeach
 
-                      
+                      @endif
+
                      
     </div>
     <div class="w-full ">
