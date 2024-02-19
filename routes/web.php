@@ -67,6 +67,7 @@ Route::post('/doctor.medicament', [MedecinController::class, 'insertMedicament']
 Route::put('/doctor.medicament/{idMedicament}', [MedecinController::class, 'updateMedicament'])->name('Medicament.updateMedicament');
 Route::delete('/doctor.medicament/{idMedicament}', [MedecinController::class, 'deleteMedicament'])->name('Delete');
 Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
+
 // ----------------------------------------------------------------------------------------
 
 // -------------------------------PATIENT--------------------------------------------------------

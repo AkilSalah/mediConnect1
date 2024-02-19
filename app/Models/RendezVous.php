@@ -24,5 +24,6 @@ class RendezVous extends Model
     {
         return $this->belongsTo(Medecin::class, 'medecin_id');
     }
+    
 }
 

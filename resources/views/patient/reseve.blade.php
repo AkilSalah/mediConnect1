@@ -10,9 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <style>
     .date-button.selected {
-    background-color: #ffcccb; /* Changer la couleur de fond pour indiquer la sélection */
-    cursor: not-allowed; /* Changer le curseur pour indiquer que le bouton est désactivé */
-}
+    background-color: #ffcccb; 
+    cursor: not-allowed; 
+    }
     </style>
 </head >
 
@@ -85,11 +85,9 @@
 
         document.getElementById('confirmButton').addEventListener('click', function (event) {
             event.preventDefault(); 
-            
             if (selectedButton) {
                 selectedButton.disabled = true;
             }
-            
             document.getElementById('rendezVousForm').submit();
         });
     });

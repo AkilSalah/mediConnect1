@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medicament;
+use App\Models\RendezVous;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedecinController extends Controller
 {
@@ -69,9 +71,7 @@ class MedecinController extends Controller
         return redirect()->route('Medicament.allSpecialityM');
     }
 
-    public function MedecinRendezvous(){
-
-    }
+    
 
 
 

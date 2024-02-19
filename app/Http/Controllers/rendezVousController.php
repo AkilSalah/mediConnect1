@@ -12,7 +12,15 @@ class rendezVousController extends Controller
 {
     public function index()
     {
-        return view('doctor.rendezVous');
+        $medecini = Auth::user()->id;
+        $medecin = Medecin::where('id_user',$medecini)->with('user')->first();
+        $rendezvous = RendezVous::select('rendez_vouses.*','patients.*', 'users.*')
+        ->join('patients', 'rendez_vouses.patient_id', '=', 'patients.id')
+        ->join('users', 'patients.id_user', '=', 'users.id')
+        ->where('rendez_vouses.medecin_id', $medecin->id)
+        ->get();
+        // dd($rendezvous);
+        return view('doctor.rendezVous', compact('rendezvous','medecin'));
     }
     public function indexPatient($idDoctor)
     {
