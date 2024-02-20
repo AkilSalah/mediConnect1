@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class MedecinController extends Controller
 {
     public function index(){ 
+
         return view('doctor.dashboard');
     }
     public function allSpeciality(){

@@ -33,29 +33,36 @@
     <div class="flex">
         <x-doctor-nav />
         <div class="content">
-            <div class="max-w-6xl mx-auto text-[#333] font-[sans-serif]">
+          
+           <div class="max-w-6xl mx-auto text-[#333] font-[sans-serif]">
                 <div class="bg-gray-50 max-sm:px-8 px-12 py-8 w-full rounded">
                   <h1 class="text-4xl text-blue-700 font-extrabold">Les dossiers médicaux </h1>
                   <div class="my-6">
                     <p class=" text-sm">Vous trouverez ci-dessous tous les dossiers médicaux des patients avec lesquels vous avez effectué une consultation.</p>
                   </div>
                 </div>
+                @if (@isset($dossiers))
+                  @foreach ($dossiers as $do)
                 <div class="grid md:grid-cols-2 gap-4 mt-4">
                   <div class="bg-gray-50 max-sm:px-8 px-12 py-8 w-full rounded">
                     <div class="flex justify-between" >
                       <h2 class=" font-bold">Monsieur</h2>
-                    <h2 class=" font-bold">10-02-2002</h2>  
+                    <h2 class=" font-bold"> {{$do->created_at->format('Y-m-d') }} </h2>  
                     </div>
-                    <h4 class="mt-2 font-bold">Gray Card</h4>  
+                    <h4 class="mt-2 font-bold"> {{$do->name}} </h4>  
 
                     <div class="my-6">
-                      <p class=" text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan, nunc et
-                        tempus blandit, metus mi consectetur nibh, a pharetra felis turpis vitae ligula. Etiam laoreet velit nec neque
-                        ultrices, non consequat mauris tincidunt.</p>
+                      <p class=" text-sm">{{$do->details}} </p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div> 
+                @endforeach  
+                    
+                @endif
+                
+              </div>   
+         
+            
          </div>
 
     </div>

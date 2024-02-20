@@ -5,25 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RendezVous extends Model
+class Certificat extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'patient_id',
-        'medecin_id',
-        'date',
+      'id_patient',
+      'id_medecin',
+      'joursRepos',
+      'details',
     ];
-
     public function patient()
     {
-        return $this->belongsTo(Patient::class, 'patient_id');
+        return $this->belongsTo(Patient::class, 'id_patient');
     }
-    
+
     public function medecin()
     {
-        return $this->belongsTo(Medecin::class, 'medecin_id');
+        return $this->belongsTo(Medecin::class, 'id_medecin');
     }
-    
-}
 
+
+}

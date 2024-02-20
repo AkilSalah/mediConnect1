@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CertificatController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\DossierMedicalController;
 use App\Http\Controllers\favorisController;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\medicamentController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\rendezVousController;
 use App\Http\Controllers\specialityController;
+use App\Models\DossierMedical;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,12 +64,17 @@ Route::delete('/admin.speciality/{specialityId}', [SpecialityController::class, 
 // ----------------------------------------------------------------------------------
 
 // ----------------------------DOCTOR--------------------------------------------------
-Route::get('/doctor.dashboard', [MedecinController::class,'index']);
+Route::get('/doctor.dashboard', [DossierMedicalController::class,'doctorIndex']);
 Route::get('/doctor.medicament', [MedecinController::class, 'allSpecialityM'])->name('Medicament.allSpecialityM');
 Route::post('/doctor.medicament', [MedecinController::class, 'insertMedicament'])->name('Medicament.insertMedicament');
 Route::put('/doctor.medicament/{idMedicament}', [MedecinController::class, 'updateMedicament'])->name('Medicament.updateMedicament');
 Route::delete('/doctor.medicament/{idMedicament}', [MedecinController::class, 'deleteMedicament'])->name('Delete');
 Route::get('/doctor.rendezvous', [rendezVousController::class, 'index']);
+Route::post('/doctor.rendezvous/{id}', [DossierMedicalController::class,'DossierStore'])->name('doctor.dossier');
+
+Route::post('/doctor.rendezvouss/{id}', [CertificatController::class,'CertifStore'])->name('doctor.certif');
+Route::get('/patient.certificat', [CertificatController::class,'index']);
+
 
 // ----------------------------------------------------------------------------------------
 

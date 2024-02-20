@@ -15,9 +15,9 @@ class DossierMedical extends Model
     ];
 
     public function patient(){
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class,'id');
     }
     public function medecin(){
-        return $this->belongsTo(Medecin::class);
+        return $this->belongsTo(Medecin::class, 'id');
     }
 }

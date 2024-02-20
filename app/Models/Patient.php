@@ -12,7 +12,6 @@ class Patient extends Model
         'id_user',
     ];
 
-
     public function user(){
         return $this->belongsTo(User::class, 'id');
     }
@@ -27,6 +26,9 @@ class Patient extends Model
     }
     public function commentaire(){
         return $this->hasMany(Commentaire::class,'id');
+    }
+    public function certificat(){
+        return $this->hasMany(Certificat::class,'id');
     }
     
 }

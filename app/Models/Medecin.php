@@ -37,5 +37,10 @@ class Medecin extends Model
     public function commentaire(){
         return $this->hasMany(Commentaire::class,'id');
     }
+    public function certificat(){
+        return $this->hasMany(Certificat::class,'id');
+    }
+
+
 
 }
